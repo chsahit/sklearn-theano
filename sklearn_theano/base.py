@@ -7,7 +7,7 @@ import theano
 import numbers
 import numpy as np
 import theano.tensor as T
-from theano.tensor.signal.downsample import max_pool_2d
+from theano.tensor.signal.pool import pool_2d
 
 
 def _relu(x):
@@ -221,7 +221,7 @@ class MaxPool(object):
 
     def _build_expression(self):
         self.input_ = T.tensor4(dtype=self.input_dtype)
-        self.expression_ = max_pool_2d(self.input_, self.max_pool_stride,
+        self.expression_ = pool_2d(self.input_, self.max_pool_stride,
                                        ignore_border=True)
 
 
